@@ -18,10 +18,10 @@ class QuestionsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
+    {
         $questions = Question::with('user')->latest()->paginate(10);
 
-        return view('questions.index', compact('questions'));        
+        return view('questions.index', compact('questions'));
     }
 
     /**
@@ -110,7 +110,7 @@ class QuestionsController extends Controller
 
         $question->delete();
 
-        if (request()->expectsJson()) 
+        if (request()->expectsJson())
         {
             return response()->json([
                 'message' => "Your question has been deleted."
